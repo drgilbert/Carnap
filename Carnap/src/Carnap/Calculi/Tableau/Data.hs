@@ -14,7 +14,6 @@ data TreeForm lex sem = TreeForm
            , treeFormResolved :: Bool
            }
 
-
 --A tree node is a node in a truth tree, labeled by the rule used to create it.
 data TreeNode lex sem rule = TreeNode 
            { treeNodeForms :: [TreeForm lex sem] 
@@ -34,10 +33,7 @@ data TableauNode lex sem rule = TableauNode
 
 type Tableau lex sem rule = Tree (TableauNode lex sem rule)
 
-data TreeFeedbackNode = Correct | Feedback String | Waiting | ParseErrorMsg String 
-    deriving (Eq)
-
-type TreeFeedback = Tree TreeFeedbackNode
+--TODO: reimplement in terms of ProofErrorMessage
 
 data TableauCalc lex sem rule = TableauCalc 
            { tbParseForm :: Parsec String () (FixLang lex sem)
